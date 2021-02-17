@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-from .models import MüşteriModel
-
+from uygulama.models.müşteri_model import MüşteriModel
+from uygulama.models.kategori_model import KategoriModel
+from uygulama.models.ürün_model import ÜrünModel
 
 class MüşteriAdmin(admin.ModelAdmin):
     search_fields=("isim","soyisim")
@@ -9,4 +10,15 @@ class MüşteriAdmin(admin.ModelAdmin):
 
 admin.site.register(MüşteriModel,MüşteriAdmin)
 
-# Register your models here.
+class KategoriAdmin(admin.ModelAdmin):
+    search_fields=("kategori_name",)
+    list_display=("kategori_name",)
+
+admin.site.register(KategoriModel,KategoriAdmin)    
+
+
+class ÜrünAdmin(admin.ModelAdmin):
+    search_fields=("ürün_adı","kategori")
+    list_display=("ürün_adı",)
+
+admin.site.register(ÜrünModel,ÜrünAdmin)
