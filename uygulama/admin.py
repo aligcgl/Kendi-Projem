@@ -3,6 +3,7 @@ from django.contrib import admin
 from uygulama.models.müşteri_model import MüşteriModel
 from uygulama.models.kategori_model import KategoriModel
 from uygulama.models.ürün_model import ÜrünModel
+from uygulama.models.spariş_model import SparişModel
 
 class MüşteriAdmin(admin.ModelAdmin):
     search_fields=("isim","soyisim")
@@ -22,3 +23,10 @@ class ÜrünAdmin(admin.ModelAdmin):
     list_display=("ürün_adı",)
 
 admin.site.register(ÜrünModel,ÜrünAdmin)
+
+
+class SparişAdmin(admin.ModelAdmin):
+    search_fields=("ürün_adı","kategori")
+    list_display=("müşteri","tutar")
+
+admin.site.register(SparişModel,SparişAdmin)

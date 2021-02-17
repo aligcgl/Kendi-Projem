@@ -4,10 +4,11 @@ from uygulama.models.kategori_model import KategoriModel
 from django.db.models.fields.related import ManyToManyField
 
 class ÜrünModel(models.Model):
-    ürün_adı=models.CharField(max_length=20)
+    ürün_adı=models.CharField(max_length=20,null=True)
     fiyat=models.IntegerField()
     kategori=ManyToManyField(KategoriModel, related_name="ürünler")
     stok_adet=models.IntegerField()
+    resim=models.ImageField(upload_to='ürün_resimleri', null=True, blank=True)
 
     class Meta():
         db_table="ürün"
